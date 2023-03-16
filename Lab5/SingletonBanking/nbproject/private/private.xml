@@ -5,9 +5,11 @@
         <group name="Labs"/>
         <group name="lab12_exam"/>
         <group>
-            <file>file:/C:/Учеба/4_sem/OOP/Lab5/SingletonBanking/src/com/example/Bank.java</file>
+            <file>file:/C:/Учеба/4_sem/OOP/Lab5/SingletonBanking/src/com/example/Customer.java</file>
+            <file>file:/C:/Учеба/4_sem/OOP/Lab5/SingletonBanking/src/com/example/CustomerReport.java</file>
+            <file>file:/C:/Учеба/4_sem/OOP/Lab5/SingletonBanking/src/com/example/CheckingAccount.java</file>
             <file>file:/C:/Учеба/4_sem/OOP/Lab5/SingletonBanking/src/com/example/SingletonBankingMain.java</file>
-            <file>file:/C:/Учеба/4_sem/OOP/Lab5/SingletonBanking/src/com/example/Account.java</file>
+            <file>file:/C:/Учеба/4_sem/OOP/Lab5/SingletonBanking/src/com/example/Bank.java</file>
         </group>
     </open-files>
 </project-private>
