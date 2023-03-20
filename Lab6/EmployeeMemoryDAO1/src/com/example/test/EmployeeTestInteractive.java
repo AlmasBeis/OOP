@@ -1,7 +1,5 @@
 package com.example.test;
 
-import com.example.dao.EmployeeDAO;
-import com.example.dao.EmployeeDAOFactory;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,16 +9,17 @@ import java.util.Date;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Locale;
+
+import com.example.dao.*;
 
 public class EmployeeTestInteractive {
 
     public static void main(String[] args) throws Exception {
-        EmployeeDAOFactory factory = new EmployeeDAOFactory();
+        //TODO create factory
 
         boolean timeToQuit = false;
 
-        EmployeeDAO dao = factory.createEmployeeDAO();
+        EmployeeDAO dao = new EmployeeDAOMemoryImpl();
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         do {
             timeToQuit = executeMenu(in, dao);
@@ -36,7 +35,7 @@ public class EmployeeTestInteractive {
         action = in.readLine();
         if ((action.length() == 0) || action.toUpperCase().charAt(0) == 'Q') {
             return true;
-        }   
+        }
 
         switch (action.toUpperCase().charAt(0)) {
             // Create a new employee record
@@ -51,7 +50,8 @@ public class EmployeeTestInteractive {
             case 'R':
                 System.out.println("Enter int value for employee id: ");
                 id = new Integer(in.readLine().trim());
-                                // Find this Employee record
+
+                // Find this Employee record
                 emp = dao.findById(id);
                 if (emp != null) {
                     System.out.println(emp + "\n");
@@ -59,7 +59,6 @@ public class EmployeeTestInteractive {
                     System.out.println("\n\nEmployee " + id + " not found");
                     break;
                 }
-                
 
                 break;
 
@@ -87,19 +86,19 @@ public class EmployeeTestInteractive {
                 id = new Integer(in.readLine().trim());
 
                 // Find this Employee record                 
-                emp = null;
-                emp = Employee.findById(id);
-                if (emp == null) {
-                    System.out.println("\n\nEmployee " + id + " not found");
-                    break;
-                }
-                emp.delete();
+//                emp = null;
+//                emp = Employee.findById(id);
+//                if (emp == null) {
+//                    System.out.println("\n\nEmployee " + id + " not found");
+//                    break;
+//                }
+                dao.delete(id);
                 System.out.println("Deleted Employee " + id);
                 break;
 
             // Display a list (Read the records) of Employees
             case 'L':
-                Employee[] allEmps = Employee.getAllEmployees();
+                Employee[] allEmps = dao.getAllEmployees();
                 for (Employee employee : allEmps) {
                     System.out.println(employee + "\n");
                 }
@@ -118,7 +117,7 @@ public class EmployeeTestInteractive {
     }
 
     public static Employee inputEmployee(BufferedReader in, Employee empDefaults, boolean newEmployee) throws IOException {
-        SimpleDateFormat df = new SimpleDateFormat("MMM d, yyyy", Locale.ENGLISH);
+        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         NumberFormat nf = NumberFormat.getCurrencyInstance();
         int id = -1;
         String firstName;
