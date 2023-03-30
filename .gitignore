@@ -1,1 +1,9 @@
 *.pdf
+/Lab6/EmployeeMemoryDAO/build/
+/Lab6/PetComposition/build/
+/Lab7/Generics-Practice01/nbproject/private/
+/Lab7/Generics-Practice02/nbproject/private/
+/Lab7/Generics-Practice03/nbproject/private/
+/Lab7/Generics-Practice01/build/
+/Lab7/Generics-Practice02/build/
+/Lab7/Generics-Practice03/build/
