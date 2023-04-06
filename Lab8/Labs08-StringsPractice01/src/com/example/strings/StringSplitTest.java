@@ -23,14 +23,14 @@ public class StringSplitTest {
 
         // Parse text
         for (String curLine : shirts) {
-            // Split line
-            // Add data to shirt list
+            String[] e = curLine.split(",");
+            shirtList.add(new Shirt(e[0], e[1], e[2], e[3]));
         }
 
         // Print out the shirts
         System.out.println("=== Shirt List ===");
         for (Shirt shirt : shirtList) {
-            // Print out each shirt
+            System.out.println(shirt.toString());
         }
     }
 }
